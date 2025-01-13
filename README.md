@@ -1,27 +1,30 @@
 # Система управления проектами на WPF
 
-![авторизация](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/43a20d5f-b1d9-4a78-a65d-c7cebd5670c0)
+![авторизация](https://github.com/user-attachments/assets/b9df2eba-1a91-4428-afe5-590440bf8115)
 
+
+
+![вход](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/6d2b6eaf-4df4-4687-bbd7-29ce3f9979c9)
 окно авторизации
 
-![регистрация](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/6d2b6eaf-4df4-4687-bbd7-29ce3f9979c9)
 
+![рег](https://github.com/user-attachments/assets/7624eae0-030f-431b-9021-279ceb50e56f)
 окно регистрации
 
-![юзер](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/59705168-34b7-4553-9ba3-6687593a40dd)
 
+![юзер](https://github.com/user-attachments/assets/f4759b66-3ec0-4a15-a225-ae6b8cd24a4b)
 окно обычного пользователя
 
-![админюзерс](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/b94c6da4-0711-4149-922b-bc2450829d83)
 
+![админюзерс](https://github.com/user-attachments/assets/d7b87ef9-88ef-4329-9352-6b08c2d09f49)
 окно администратора список пользователей
 
-![админ задачи](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/e1237b72-6144-4797-97b9-b0e828a83eec)
 
+![админ задачи](https://github.com/user-attachments/assets/6498106d-9aac-41d9-bb49-075ee57596ac)
 окно администратора список задач
 
-![админ проекты](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/9a5c4bf1-c9b1-4bda-a400-d111c9d6d22f)
 
+![админ проекты](https://github.com/user-attachments/assets/82466435-2b19-427f-a074-66d01e6d33ba)
 окно администратора список проектов
 
 ## Функциональность
