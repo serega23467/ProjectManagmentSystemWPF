@@ -29,7 +29,7 @@
 
 
 
-![админ задачи](https://github.com/user-attachments/assets/6498106d-9aac-41d9-bb49-075ee57596ac)
+![админ задачи](https://github.com/user-attachments/assets/5aa373bd-cc19-42b3-8313-dfc68610452e)
 
 окно администратора список задач
 
