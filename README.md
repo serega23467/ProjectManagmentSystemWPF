@@ -6,8 +6,10 @@
 
 
 
+
 ![рег](https://github.com/user-attachments/assets/7624eae0-030f-431b-9021-279ceb50e56f)
 окно регистрации
+
 
 
 
@@ -16,13 +18,16 @@
 
 
 
+
 ![админюзерс](https://github.com/user-attachments/assets/d7b87ef9-88ef-4329-9352-6b08c2d09f49)
 окно администратора список пользователей
 
 
 
+
 ![админ задачи](https://github.com/user-attachments/assets/6498106d-9aac-41d9-bb49-075ee57596ac)
 окно администратора список задач
+
 
 
 
