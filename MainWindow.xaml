@@ -1,0 +1,19 @@
+﻿<Window x:Class="ProjectManagmentSystemWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectManagmentSystemWPF"
+        mc:Ignorable="d"
+        Title="" Height="526" Width="448" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="182,29,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" FontSize="32"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Margin="144,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
+        <PasswordBox x:Name="passwordBoxPass" HorizontalAlignment="Left" Margin="144,213,0,0" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
+        <Button x:Name="buttonLogin" Content="Войти" HorizontalAlignment="Left" Margin="67,321,0,0" VerticalAlignment="Top" FontSize="26" Width="154" Click="buttonLogin_Click"/>
+        <Button x:Name="buttonRegister" Content="Регистрация" HorizontalAlignment="Left" Margin="289,325,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonRegister_Click" Width="135"/>
+        <TextBlock HorizontalAlignment="Left" Margin="79,150,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="46,214,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="235,327,0,0" TextWrapping="Wrap" Text="или" VerticalAlignment="Top" FontSize="20"/>
+    </Grid>
+</Window>
