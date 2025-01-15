@@ -22,7 +22,7 @@ namespace ProjectManagmentSystemWPF
         private DispatcherTimer timer;
         List<DataGridTask> tasks;
         bool hasNotice = false;
-        Dictionary<int, string> taskPriorityDictionary = new Dictionary<int, string>() { { 1, "low" }, { 2, "middle" }, { 3, "high" } };
+        Dictionary<int, string> taskPriorityDictionary = new Dictionary<int, string>() { { 1, "слабый" }, { 2, "средний" }, { 3, "сильный" } };
         public WindowEmployee(User user)
         {
             InitializeComponent();
@@ -107,6 +107,11 @@ namespace ProjectManagmentSystemWPF
                             {
                                 DateTime date = DateTime.ParseExact(task.Deadline, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                                 TimeSpan dif = date - DateTime.Now;
+                                if (dif.TotalDays > 0)
+                                {
+                                    MessageBox.Show($"Задача {task.Name} просрочена на {Math.Abs(dif.Days)} дней");
+                                    hasNotice = true;
+                                }
                                 if (dif.TotalDays<7)
                                 {
                                     MessageBox.Show($"До выполнения задачи {task.Name} осталось {dif.Days} дней");

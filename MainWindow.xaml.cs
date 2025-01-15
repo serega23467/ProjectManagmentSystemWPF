@@ -21,24 +21,24 @@ namespace ProjectManagmentSystemWPF
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             string login = textBoxLogin.Text;
-            string password = passwordBoxPass.Password;
-            User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == login && u.Password == password);
-            if (user != null)
+            string password = PasswordHasher.GetInstance().HashPassword(passwordBoxPass.Password);
+            User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == login);
+            if (user != null && PasswordHasher.GetInstance().VerifyPassword(password, user.Password)) 
             {
                 Role role = DataBaseContext.GetDB().Roles.FirstOrDefault(r => r.Id == user.RoleId);
                 if (role != null)
                 {
                     switch (role.RoleName)
                     {
-                        case "Admin":
+                        case "Админ":
                             WindowAdmin windowAdmin = new WindowAdmin(user);
                             windowAdmin.ShowDialog();
                             break;
-                        case "Employee":
+                        case "Сотрудник":
                             WindowEmployee windowEmployee = new WindowEmployee(user);
                             windowEmployee.ShowDialog();
                             break;
-                        case "Editor":
+                        case "Пользователь":
                             WindowEditor windowEditor = new WindowEditor(user);
                             windowEditor.ShowDialog();
                             break;
@@ -47,7 +47,7 @@ namespace ProjectManagmentSystemWPF
             }
             else
             {
-                MessageBox.Show("Wrong login or password");
+                MessageBox.Show("Неправильный логин или пароль");
             }
         }
 
@@ -56,6 +56,12 @@ namespace ProjectManagmentSystemWPF
         {
             WindowRegistration registration = new WindowRegistration();
             registration.ShowDialog();
+        }
+
+        private void buttonChangePass_Click(object sender, RoutedEventArgs e)
+        {
+            WindowChangePass windowChangePass = new WindowChangePass();
+            windowChangePass.ShowDialog();
         }
     }
 }

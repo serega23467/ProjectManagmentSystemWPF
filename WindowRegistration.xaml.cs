@@ -32,38 +32,38 @@ namespace ProjectManagmentSystemWPF
         {
             if (comboBoxRole.SelectedItem == null)
             {
-                MessageBox.Show("No selected role");
+                MessageBox.Show("Не выбрана роль");
                 return;
             }
             if (textBoxLogin.Text.Length < 6)
             {
-                MessageBox.Show("Minimum 6 symbols in login");
+                MessageBox.Show("Минимум 6 символов в логине");
                 return;
             }
             if (textBoxName.Text.Length < 6)
             {
-                MessageBox.Show("Minimum 6 symbols in name");
+                MessageBox.Show("Минимум 6 символов в имени");
                 return;
             }
             if (passwordBoxPass.Password.Length < 6)
             {
-                MessageBox.Show("Minimum 6 symbols in password");
+                MessageBox.Show("Минимум 6 символов в пароле");
                 return;
             }
             if (passwordBoxPass.Password != passwordBoxRepeatPass.Password)
             {
-                MessageBox.Show("Password does not match");
+                MessageBox.Show("Пароли не совпадают");
                 return;
             }
             if (DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == textBoxLogin.Text) != null)
             {
-                MessageBox.Show("Login is in use");
+                MessageBox.Show("Логин используется");
                 return;
             }
             Role role = DataBaseContext.GetDB().Roles.FirstOrDefault(r => r.RoleName == comboBoxRole.SelectedItem.ToString());
             if (role != null)
             {
-                DataBaseContext.GetDB().Users.Add(new User() { Login = textBoxLogin.Text, Name = textBoxName.Text, Password = passwordBoxRepeatPass.Password, Description = textBoxDescription.Text, RoleId = role.Id });
+                DataBaseContext.GetDB().Users.Add(new User() { Login = textBoxLogin.Text, Name = textBoxName.Text, Password = PasswordHasher.GetInstance().HashPassword(passwordBoxRepeatPass.Password), Description = textBoxDescription.Text, RoleId = role.Id });
                 DataBaseContext.GetDB().SaveChanges();
                 Close();
             }

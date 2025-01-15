@@ -20,7 +20,7 @@ namespace ProjectManagmentSystemWPF
         List<DataGridUser> users;
         List<DataGridTask> tasks;
         List<DataGridProjectCard> cards;
-        Dictionary<int, string> taskPriorityDictionary = new Dictionary<int, string>() { { 1, "low" }, { 2, "middle" }, { 3, "high" } };
+        Dictionary<int, string> taskPriorityDictionary = new Dictionary<int, string>() { { 1, "слабый" }, { 2, "средний" }, { 3, "сильный" } };
         public WindowAdmin(User user)
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace ProjectManagmentSystemWPF
             comboBoxEditRole.ItemsSource = roles;
             comboBoxEditRole.SelectedIndex = 0;
 
-            comboBoxEditPriority.ItemsSource = new List<string> { "low", "middle", "high" };
+            comboBoxEditPriority.ItemsSource = new List<string> { "слабый", "средний", "сильный" };
             comboBoxEditPriority.SelectedIndex = 0;
 
             users = new List<DataGridUser>();
@@ -138,14 +138,6 @@ namespace ProjectManagmentSystemWPF
                 textBoxEditName.Text = user.Name;
                 textBoxEditDescription.Text = user.Description;
                 comboBoxEditRole.SelectedValue = user.RoleName;
-                if (user.RoleName != "Admin")
-                {
-                    textBoxUserPass.Text = user.Password;
-                }
-                else
-                {
-                    textBoxUserPass.Text = string.Empty;
-                }
             }
         }
 
@@ -154,18 +146,18 @@ namespace ProjectManagmentSystemWPF
             DataGridUser user = dataGridAdminUsers.SelectedItem as DataGridUser;
             if (user != null)
             {
-                if (user.RoleName == "Admin")
+                if (user.RoleName == "Админ")
                 {
-                    MessageBox.Show("Impossible to change a user with the admin role");
+                    MessageBox.Show("Невозможно изменить админа");
                 }
                 else if (user.RoleName == comboBoxEditRole.SelectedItem.ToString() && user.Login == textBoxEditLogin.Text && user.Name == textBoxEditName.Text && user.Description == textBoxEditDescription.Text)
                 {
-                    MessageBox.Show("No changes");
+                    MessageBox.Show("Нет изменений");
                 }
                 else
                 {
                     Role role = DataBaseContext.GetDB().Roles.FirstOrDefault(r => r.RoleName == comboBoxEditRole.SelectedItem.ToString());
-                    if (textBoxEditName.Text.Length >= 6 && textBoxEditLogin.Text.Length >= 6 && textBoxUserPass.Text.Length >= 6 && role != null)
+                    if (textBoxEditName.Text.Length >= 6 && textBoxEditLogin.Text.Length >= 6 && role != null)
                     {
                         User userToEdit = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Id == user.Id);
                         if (userToEdit != null)
@@ -179,10 +171,9 @@ namespace ProjectManagmentSystemWPF
                                     userToEdit.Login = textBoxEditLogin.Text;
                                     userToEdit.Description = textBoxEditDescription.Text;
                                     userToEdit.RoleId = role.Id;
-                                    userToEdit.Password = textBoxUserPass.Text;
 
                                     DataBaseContext.GetDB().SaveChanges();
-                                    MessageBox.Show("Successfully");
+                                    MessageBox.Show("Успешно");
                                     UpdateUsersList();
                                 }
                                 else if (usersWithSameLogins.Count < 2)
@@ -192,15 +183,14 @@ namespace ProjectManagmentSystemWPF
                                         userToEdit.Name = textBoxEditName.Text;
                                         userToEdit.Description = textBoxEditDescription.Text;
                                         userToEdit.RoleId = role.Id;
-                                        userToEdit.Password = textBoxUserPass.Text;
 
                                         DataBaseContext.GetDB().SaveChanges();
-                                        MessageBox.Show("Successfully");
+                                        MessageBox.Show("Успешно");
                                         UpdateUsersList();
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Login is in use");
+                                        MessageBox.Show("Логин используется");
                                     }
                                 }
                             }
@@ -208,50 +198,13 @@ namespace ProjectManagmentSystemWPF
                     }
                     else
                     {
-                        MessageBox.Show("Login and password must be 6 symbols minimum");
+                        MessageBox.Show("Логин должен быть от 6 символов");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Select a user");
-            }
-        }
-
-        private void buttonAddUser_Click(object sender, RoutedEventArgs e)
-        {
-            if (comboBoxEditRole.SelectedItem == null)
-            {
-                MessageBox.Show("No selected role");
-                return;
-            }
-            if (textBoxEditLogin.Text.Length < 6)
-            {
-                MessageBox.Show("Minimum 6 symbols in login");
-                return;
-            }
-            if (textBoxEditName.Text.Length < 6)
-            {
-                MessageBox.Show("Minimum 6 symbols in name");
-                return;
-            }
-            if (textBoxUserPass.Text.Length < 6)
-            {
-                MessageBox.Show("Minimum 6 symbols in password");
-                return;
-            }
-            if (DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == textBoxEditLogin.Text) != null)
-            {
-                MessageBox.Show("Login is in use");
-                return;
-            }
-            Role role = DataBaseContext.GetDB().Roles.FirstOrDefault(r => r.RoleName == comboBoxEditRole.SelectedItem.ToString());
-            if (role != null)
-            {
-                DataBaseContext.GetDB().Users.Add(new User() { Login = textBoxEditLogin.Text, Name = textBoxEditName.Text, Password = textBoxUserPass.Text, Description = textBoxEditDescription.Text, RoleId = role.Id });
-                DataBaseContext.GetDB().SaveChanges();
-                MessageBox.Show("Sucessfully");
-                UpdateUsersList();
+                MessageBox.Show("Выберите пользователя");
             }
         }
 
@@ -282,7 +235,7 @@ namespace ProjectManagmentSystemWPF
                 if (textBoxEditTaskName.Text == task.Name && textBoxEditTaskEmployees.Text == task.Employees && textBoxEditInfo.Text == task.Info
                 && comboBoxEditPriority.SelectedValue == task.PriorityString && textBoxDeadline.Text == task.Deadline)
                 {
-                    MessageBox.Show("No changes");
+                    MessageBox.Show("Нет изменений");
                     return;
                 }
                 if (textBlockTaskId.Text == string.Empty)
@@ -362,7 +315,7 @@ namespace ProjectManagmentSystemWPF
                             }
                         }
                     }
-                    MessageBox.Show("Sucessfully");
+                    MessageBox.Show("Успешно");
                     DataBaseContext.GetDB().SaveChanges();
                     UpdateTasksList();
 
@@ -475,7 +428,7 @@ namespace ProjectManagmentSystemWPF
                     DataBaseContext.GetDB().SaveChanges();
                     DataBaseContext.GetDB().Tasks.Remove(taskToDelete);
                     DataBaseContext.GetDB().SaveChanges();
-                    MessageBox.Show("Sucessfully");
+                    MessageBox.Show("Успешно");
                     UpdateTasksList();
                 }
             }
@@ -549,7 +502,7 @@ namespace ProjectManagmentSystemWPF
                 DataBaseContext.GetDB().SaveChanges();
             }
 
-            MessageBox.Show("Sucessfully");
+            MessageBox.Show("Успешно");
             UpdateProjectsCardsList();
         }
 
@@ -566,7 +519,7 @@ namespace ProjectManagmentSystemWPF
             {
                 if (textBoxProjectDescription.Text == card.ProjectDescription && textBoxProjectEmployees.Text == card.ProjectEmployees)
                 {
-                    MessageBox.Show("No changes");
+                    MessageBox.Show("Нет изменений");
                     return;
                 }
                 if (textBoxProjectDescription.Text == string.Empty)
@@ -605,14 +558,14 @@ namespace ProjectManagmentSystemWPF
                             DataBaseContext.GetDB().ProjectsEmployees.Add(new ProjectEmployer() { ProjectId = int.Parse(textBlockProjectId.Text), EmployerId = user.Id });
                         }
                     }
-                    MessageBox.Show("Sucessfully");
+                    MessageBox.Show("Успешно");
                     DataBaseContext.GetDB().SaveChanges();
                     UpdateProjectsCardsList();
                 }
                 else
                 {
                     cardToEdit.ProjectDescription = textBoxProjectDescription.Text;
-                    MessageBox.Show("Sucessfully");
+                    MessageBox.Show("Успешно");
                     DataBaseContext.GetDB().SaveChanges();
                     UpdateProjectsCardsList();
                 }
@@ -646,7 +599,7 @@ namespace ProjectManagmentSystemWPF
                     DataBaseContext.GetDB().SaveChanges();
                     DataBaseContext.GetDB().ProjectsCards.Remove(cardToDelete);
                     DataBaseContext.GetDB().SaveChanges();
-                    MessageBox.Show("Sucessfully");
+                    MessageBox.Show("Успешно");
                     UpdateProjectsCardsList();
                     UpdateTasksList();
                 }

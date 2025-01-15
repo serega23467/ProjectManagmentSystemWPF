@@ -33,14 +33,12 @@
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,130,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" FontSize="20"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,166,0,0" TextWrapping="Wrap" Text="Роль" VerticalAlignment="Top" FontSize="20"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,209,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" FontSize="20"/>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="19,353,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" FontSize="20" Width="103"/>
 
                     <TextBlock x:Name="textBlockUserId" Grid.Column="1" HorizontalAlignment="Left" Margin="147,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20"/>
                     <TextBox x:Name="textBoxEditLogin" Grid.Column="1" HorizontalAlignment="Left" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="20" MaxLength="20" PreviewTextInput="textBoxEditLogin_PreviewTextInput"/>
                     <TextBox x:Name="textBoxEditName" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="20"/>
                     <ComboBox x:Name="comboBoxEditRole" Grid.Column="1" HorizontalAlignment="Left" Margin="147,166,0,0" VerticalAlignment="Top" Width="202" Height="32" FontSize="20"/>
                     <TextBox x:Name="textBoxEditDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="145,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="134" MaxLength="120"/>
-                    <TextBox x:Name="textBoxUserPass" Grid.Column="1" HorizontalAlignment="Left" Margin="147,353,0,0" VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="20"/>
                     <Button x:Name="buttonEditUser" Grid.Column="1" Content="Изменить" HorizontalAlignment="Left" Margin="268,479,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditUser_Click"/>
                 </Grid>
             </TabItem>

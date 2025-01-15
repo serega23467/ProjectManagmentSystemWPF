@@ -1186,19 +1186,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Student\\.nuget\\packages\\": {}
+    "C:\\Users\\sereg\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Student\\Desktop\\ProjectManagmentSystemWPF-master\\ProjectManagmentSystemWPF.csproj",
+      "projectUniqueName": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
       "projectName": "ProjectManagmentSystemWPF",
-      "projectPath": "C:\\Users\\Student\\Desktop\\ProjectManagmentSystemWPF-master\\ProjectManagmentSystemWPF.csproj",
-      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Student\\Desktop\\ProjectManagmentSystemWPF-master\\obj\\",
+      "projectPath": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+      "packagesPath": "C:\\Users\\sereg\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sereg\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
