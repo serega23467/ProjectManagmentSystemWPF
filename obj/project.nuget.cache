@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mcymeXipQUM=",
+  "dgSpecHash": "imA19XPvvtQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+  "projectFilePath": "C:\\Users\\sereg\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sereg\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.6\\microsoft.data.sqlite.core.8.0.6.nupkg.sha512",
     "C:\\Users\\sereg\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.6\\microsoft.entityframeworkcore.8.0.6.nupkg.sha512",

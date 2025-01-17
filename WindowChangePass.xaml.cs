@@ -48,13 +48,13 @@ namespace ProjectManagmentSystemWPF
                 MessageBox.Show("Данного логина не существует");
                 return;
             }
-            if (PasswordHasher.GetInstance().VerifyPassword(passwordBoxPass.Password, user.Password))
+            string newPassword = PasswordHasher.GetInstance().HashPassword(passwordBoxPass.Password);
+            if (PasswordHasher.GetInstance().VerifyPassword(newPassword, user.Password))
             {
                 MessageBox.Show("Пароль не изменился");
                 return;
             }
 
-            string newPassword = PasswordHasher.GetInstance().HashPassword(passwordBoxPass.Password);
             user.Password = newPassword;
             DataBaseContext.GetDB().SaveChanges();
             MessageBox.Show("Успешно");

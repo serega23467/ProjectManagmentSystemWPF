@@ -1,0 +1,27 @@
+﻿<Window x:Class="ProjectManagmentSystemWPF.WindowAddTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectManagmentSystemWPF"
+        mc:Ignorable="d"
+        Title="" Height="841" Width="618" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="44,90,0,0" TextWrapping="Wrap" Text="Имя задачи" VerticalAlignment="Top" FontSize="20" Width="112"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,130,0,0" TextWrapping="Wrap" Text="Информация" VerticalAlignment="Top" FontSize="20" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,255,0,0" TextWrapping="Wrap" Text="Приоритет" VerticalAlignment="Top" FontSize="20" Width="168"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,304,0,0" TextWrapping="Wrap" Text="Сотрудники (логины разделенные запятаями)" VerticalAlignment="Top" FontSize="20" Width="224"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,468,0,0" TextWrapping="Wrap" Text="Дедлайн (yyyy-mm-dd)" VerticalAlignment="Top" Width="215" Height="62" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="47,540,0,0" TextWrapping="Wrap" Text="Имя проекта" VerticalAlignment="Top" Width="211" FontSize="20"/>
+
+        <TextBox x:Name="textBoxEditTaskName" HorizontalAlignment="Left" Margin="274,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" FontSize="20" MaxLength="40"/>
+        <TextBox x:Name="textBoxEditInfo" HorizontalAlignment="Left" Margin="274,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="324" FontSize="20" Height="113" MaxLength="200"/>
+        <TextBox x:Name="textBoxEditTaskEmployees" HorizontalAlignment="Left" Margin="274,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" Height="106" FontSize="20" MaxLength="500"/>
+        <Button x:Name="buttonConstructor" Content="Конструктор сотрудников" HorizontalAlignment="Left" Margin="274,415,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="324" Click="buttonConstructor_Click"/>
+        <ComboBox x:Name="comboBoxEditPriority" HorizontalAlignment="Left" Margin="274,257,0,0" VerticalAlignment="Top" Width="329" Height="32" FontSize="20"/>
+        <TextBox x:Name="textBoxDeadline" HorizontalAlignment="Left" Margin="274,468,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="327" MaxLength="12" FontSize="24"/>
+        <TextBox x:Name="textBoxTaskProjectName" HorizontalAlignment="Left" Margin="274,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="326" MaxLength="50" Height="34"/>
+        <Button x:Name="buttonAddTask" Content="Oк" HorizontalAlignment="Left" Margin="197,709,0,0" VerticalAlignment="Top" FontSize="24" Width="112" Click="buttonAddTask_Click"/>
+
+    </Grid>
+</Window>

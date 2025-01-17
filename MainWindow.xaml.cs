@@ -38,7 +38,7 @@ namespace ProjectManagmentSystemWPF
                             WindowEmployee windowEmployee = new WindowEmployee(user);
                             windowEmployee.ShowDialog();
                             break;
-                        case "Пользователь":
+                        case "Редактор":
                             WindowEditor windowEditor = new WindowEditor(user);
                             windowEditor.ShowDialog();
                             break;

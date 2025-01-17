@@ -1191,11 +1191,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+      "projectUniqueName": "C:\\Users\\sereg\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
       "projectName": "ProjectManagmentSystemWPF",
-      "projectPath": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+      "projectPath": "C:\\Users\\sereg\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
       "packagesPath": "C:\\Users\\sereg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sereg\\Desktop\\ManagmentSystem\\ProjectManagmentSystemWPF\\obj\\",
+      "outputPath": "C:\\Users\\sereg\\Desktop\\ProjectManagmentSystemWPF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sereg\\AppData\\Roaming\\NuGet\\NuGet.Config",

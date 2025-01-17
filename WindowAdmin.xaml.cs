@@ -240,22 +240,22 @@ namespace ProjectManagmentSystemWPF
                 }
                 if (textBlockTaskId.Text == string.Empty)
                 {
-                    MessageBox.Show("Select a project");
+                    MessageBox.Show("Выберите проект");
                     return;
                 }
                 if (textBoxEditTaskName.Text == string.Empty)
                 {
-                    MessageBox.Show("Enter task name");
+                    MessageBox.Show("Введите имя задачи");
                     return;
                 }
                 if (textBoxEditInfo.Text == string.Empty)
                 {
-                    MessageBox.Show("Enter task info");
+                    MessageBox.Show("Введите информацию о задаче");
                     return;
                 }
                 if (comboBoxEditPriority.SelectedItem == null)
                 {
-                    MessageBox.Show("No selected role");
+                    MessageBox.Show("Не выбран приоритет");
                     return;
                 }
                 if (DataBaseContext.GetDB().Tasks.Where(t => t.Name == textBoxEditTaskName.Text) != null)
@@ -265,7 +265,7 @@ namespace ProjectManagmentSystemWPF
                     {
                         if (tasksWithSameNames[0].Id != int.Parse(textBlockTaskId.Text))
                         {
-                            MessageBox.Show("Task name is in use");
+                            MessageBox.Show("Имя задачи занято");
                             return;
                         }
                     }
@@ -273,7 +273,7 @@ namespace ProjectManagmentSystemWPF
                 string pattern = @"^\d{4}-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))$";
                 if (!Regex.IsMatch(textBoxDeadline.Text, pattern))
                 {
-                    MessageBox.Show("Wrong date format");
+                    MessageBox.Show("Неверный формат даты");
                     return;
                 }
                 ProjectTask projectTaskToEdit = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == int.Parse(textBlockTaskId.Text));
@@ -294,9 +294,15 @@ namespace ProjectManagmentSystemWPF
                             }
                             foreach (string employee in employeesLogins)
                             {
-                                if (DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == employee) == null)
+                                User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == employee);
+                                if (user == null)
                                 {
-                                    MessageBox.Show("No user with login " + employee);
+                                    MessageBox.Show("Нет пользователя с логином " + employee);
+                                    return;
+                                }
+                                else if (DataBaseContext.GetDB().ProjectsEmployees.FirstOrDefault(p => p.EmployerId == user.Id) == null)
+                                {
+                                    MessageBox.Show("Этот пользователь не участвует в данном проекте: " + user.Login);
                                     return;
                                 }
                             }
@@ -314,6 +320,14 @@ namespace ProjectManagmentSystemWPF
                                 }
                             }
                         }
+                        else
+                        {
+                            List<TaskEmployer> projectTaskEmployeesToEdit = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == int.Parse(textBlockTaskId.Text)).ToList();
+                            foreach (TaskEmployer taskEmployer in projectTaskEmployeesToEdit)
+                            {
+                                DataBaseContext.GetDB().TasksEmployees.Remove(taskEmployer);
+                            }
+                        }
                     }
                     MessageBox.Show("Успешно");
                     DataBaseContext.GetDB().SaveChanges();
@@ -322,92 +336,18 @@ namespace ProjectManagmentSystemWPF
                 }
                 else
                 {
-                    MessageBox.Show("No task with this id");
+                    MessageBox.Show("Нет задачи с таким id");
                 }
             }
             else
             {
-                MessageBox.Show("Select a task");
+                MessageBox.Show("Выберите задачу");
             }
         }
         private void buttonAddTask_Click(object sender, RoutedEventArgs e)
         {
-            ProjectCard projectCard = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.ProjectName == textBoxTaskProjectName.Text);
-            if (projectCard == null)
-            {
-                MessageBox.Show("No project with this name");
-                return;
-            }
-            if (textBoxEditTaskName.Text == string.Empty)
-            {
-                MessageBox.Show("Enter task name");
-                return;
-            }
-            if (DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Name == textBoxEditTaskName.Text) != null)
-            {
-                MessageBox.Show("Task name is in use");
-                return;
-            }
-            if (textBoxEditInfo.Text == string.Empty)
-            {
-                MessageBox.Show("Enter task info");
-                return;
-            }
-            if (comboBoxEditPriority.SelectedItem == null)
-            {
-                MessageBox.Show("No selected role");
-                return;
-            }
-            string pattern = @"^\d{4}-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))$";
-            if (!Regex.IsMatch(textBoxDeadline.Text, pattern))
-            {
-                MessageBox.Show("Wrong date format");
-                return;
-            }
-            ProjectTask projectTaskToAdd = new ProjectTask();
-            projectTaskToAdd.Name = textBoxEditTaskName.Text;
-            projectTaskToAdd.Priority = taskPriorityDictionary.FirstOrDefault(t => t.Value == comboBoxEditPriority.SelectedItem).Key;
-            projectTaskToAdd.Info = textBoxEditInfo.Text;
-            projectTaskToAdd.Deadline = textBoxDeadline.Text;
-            projectTaskToAdd.ProjectId = projectCard.Id;
-            DataBaseContext.GetDB().Tasks.Add(projectTaskToAdd);
-            DataBaseContext.GetDB().SaveChanges();
-            if (textBoxEditTaskEmployees.Text != string.Empty)
-            {
-                HashSet<string> employeesLogins = new HashSet<string>();
-                foreach (string s in textBoxEditTaskEmployees.Text.Split(','))
-                {
-                    employeesLogins.Add(s);
-                }
-                foreach (string employee in employeesLogins)
-                {
-                    User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == employee);
-                    if (user == null)
-                    {
-                        MessageBox.Show("No user with login " + employee + " but the task was added");
-                        return;
-                    }
-                    else if (DataBaseContext.GetDB().ProjectsEmployees.FirstOrDefault(p => p.EmployerId == user.Id) == null)
-                    {
-                        MessageBox.Show("This user is not involved in this project: " + user.Name);
-                        return;
-                    }
-                }
-                foreach (string login in employeesLogins)
-                {
-                    User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == login);
-                    if (user != null)
-                    {
-                        ProjectTask task = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Name == textBoxEditTaskName.Text);
-                        if (task != null)
-                        {
-                            DataBaseContext.GetDB().TasksEmployees.Add(new TaskEmployer() { TaskId = task.Id, EmployerId = user.Id });
-                        }
-                    }
-                }
-            }
-            MessageBox.Show("Sucessfully");
-            DataBaseContext.GetDB().SaveChanges();
+            WindowAddTask windowAddTask = new WindowAddTask();
+            windowAddTask.ShowDialog();
             UpdateTasksList();
         }
 
@@ -434,7 +374,7 @@ namespace ProjectManagmentSystemWPF
             }
             else
             {
-                MessageBox.Show("Select a task");
+                MessageBox.Show("Выберите задачу");
             }
         }
         private void listBoxProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -450,67 +390,16 @@ namespace ProjectManagmentSystemWPF
         }
         private void buttonAddProject_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxProjectName.Text == string.Empty)
-            {
-                MessageBox.Show("Enter project name");
-                return;
-            }
-            if (textBoxProjectDescription.Text == string.Empty)
-            {
-                MessageBox.Show("Enter project description");
-                return;
-            }
-            if (DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.ProjectName == textBoxProjectName.Text) != null)
-            {
-                MessageBox.Show("Project name is in use");
-                return;
-            }
-            ProjectCard projectCardToAdd = new ProjectCard();
-            projectCardToAdd.Progress = 0;
-            projectCardToAdd.ProjectName = textBoxProjectName.Text;
-            projectCardToAdd.ProjectDescription = textBoxProjectDescription.Text;
-            DataBaseContext.GetDB().ProjectsCards.Add(projectCardToAdd);
-            DataBaseContext.GetDB().SaveChanges();
-
-            if (textBoxProjectEmployees.Text != string.Empty)
-            {
-                HashSet<string> employeesLogins = new HashSet<string>();
-                foreach (string s in textBoxProjectEmployees.Text.Split(','))
-                {
-                    employeesLogins.Add(s);
-                }
-                foreach (string employee in employeesLogins)
-                {
-                    if (DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == employee) == null)
-                    {
-                        MessageBox.Show("No user with login " + employee + " but the project was added");
-                        return;
-                    }
-                }
-                foreach (string login in employeesLogins)
-                {
-                    User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == login);
-                    if (user != null)
-                    {
-                        ProjectCard projectCard = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(P => P.ProjectName == textBoxProjectName.Text);
-                        if (projectCard != null)
-                        {
-                            DataBaseContext.GetDB().ProjectsEmployees.Add(new ProjectEmployer() { ProjectId = projectCard.Id, EmployerId = user.Id });
-                        }
-                    }
-                }
-                DataBaseContext.GetDB().SaveChanges();
-            }
-
-            MessageBox.Show("Успешно");
-            UpdateProjectsCardsList();
+           WindowAddProject windowAddProject = new WindowAddProject();
+           windowAddProject.ShowDialog();
+           UpdateProjectsCardsList();
         }
 
         private void buttonEditProject_Click(object sender, RoutedEventArgs e)
         {
             if (textBlockProjectId.Text == string.Empty)
             {
-                MessageBox.Show("Select a project");
+                MessageBox.Show("Выберите проект");
                 return;
             }
             DataGridProjectCard card = listBoxProjects.SelectedItem as DataGridProjectCard;
@@ -524,11 +413,25 @@ namespace ProjectManagmentSystemWPF
                 }
                 if (textBoxProjectDescription.Text == string.Empty)
                 {
-                    MessageBox.Show("Enter project description");
+                    MessageBox.Show("Введите описание проекта");
                     return;
                 }
                 if (textBoxProjectEmployees.Text != card.ProjectEmployees)
                 {
+                    List<ProjectTask> tasks = DataBaseContext.GetDB().Tasks.Where(t => t.ProjectId == int.Parse(textBlockProjectId.Text)).ToList();
+                    if (textBoxProjectEmployees.Text==string.Empty)
+                    {
+                        foreach (var task in tasks)
+                        {
+                            List<TaskEmployer> taskEmployers = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == task.Id).ToList();
+                            foreach (var taskEmp in taskEmployers)
+                            {
+                                DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
+                            }
+                        }
+                        return;
+                    }
+
                     HashSet<string> employeesLogins = new HashSet<string>();
                     if (textBoxProjectEmployees.Text != string.Empty)
                     {
@@ -540,11 +443,11 @@ namespace ProjectManagmentSystemWPF
                         {
                             if (DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == employee) == null)
                             {
-                                MessageBox.Show("No user with login " + employee);
+                                MessageBox.Show("Нет пользователя с логином " + employee);
                                 return;
                             }
                         }
-                    }
+                    }            
                     List<ProjectEmployer> projectEmployeesToEdit = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.ProjectId == int.Parse(textBlockProjectId.Text)).ToList();
                     foreach (ProjectEmployer employer in projectEmployeesToEdit)
                     {
@@ -558,8 +461,22 @@ namespace ProjectManagmentSystemWPF
                             DataBaseContext.GetDB().ProjectsEmployees.Add(new ProjectEmployer() { ProjectId = int.Parse(textBlockProjectId.Text), EmployerId = user.Id });
                         }
                     }
-                    MessageBox.Show("Успешно");
                     DataBaseContext.GetDB().SaveChanges();
+                    foreach (var task in tasks)
+                    {
+                        List<TaskEmployer> taskEmployers = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == task.Id).ToList();
+                        foreach (var taskEmp in taskEmployers)
+                        {
+                            var test = DataBaseContext.GetDB().ProjectsEmployees.FirstOrDefault(e => e.EmployerId == taskEmp.EmployerId && e.ProjectId == task.ProjectId);
+                            if (test == null)
+                            {
+                                DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
+                                DataBaseContext.GetDB().SaveChanges();
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("Успешно");
                     UpdateProjectsCardsList();
                 }
                 else
@@ -572,7 +489,7 @@ namespace ProjectManagmentSystemWPF
             }
             else
             {
-                MessageBox.Show("Select a project");
+                MessageBox.Show("Выберите проект");
             }
 
         }
@@ -594,6 +511,12 @@ namespace ProjectManagmentSystemWPF
                     List<ProjectTask> projectTasksToDelete = DataBaseContext.GetDB().Tasks.Where(t => t.ProjectId == cardId).ToList();
                     foreach (ProjectTask task in projectTasksToDelete)
                     {
+                        List<TaskEmployer> taskEmployersToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == task.Id).ToList();
+                        foreach(var taskEmp in taskEmployersToDelete)
+                        {
+                            DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
+                            DataBaseContext.GetDB().SaveChanges();
+                        }
                         DataBaseContext.GetDB().Tasks.Remove(task);
                     }
                     DataBaseContext.GetDB().SaveChanges();
@@ -606,7 +529,7 @@ namespace ProjectManagmentSystemWPF
             }
             else
             {
-                MessageBox.Show("Select a project");
+                MessageBox.Show("Выберите проект");
             }
         }
 
@@ -615,5 +538,50 @@ namespace ProjectManagmentSystemWPF
             UpdateProjectsCardsList();
         }
 
+        private void buttonEditTaskConstructor_Click(object sender, RoutedEventArgs e)
+        {
+            if(int.TryParse(textBlockTaskId.Text, out int taskId))
+            {
+                ProjectTask task = DataBaseContext.GetDB().Tasks.FirstOrDefault(t=>t.Id == taskId);
+                if (task != null)
+                {
+                    string result = textBoxEditTaskEmployees.Text;
+                    WindowEmployeesConstructor windowEmployeesConstructor = new WindowEmployeesConstructor(false, false, task.Id, task.ProjectId);
+                    windowEmployeesConstructor.Closed += (s, args) =>
+                    {
+                        result = windowEmployeesConstructor.result;
+                    };
+                    windowEmployeesConstructor.ShowDialog();
+                    textBoxEditTaskEmployees.Text = result;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Сначала выберите задачу");
+            }
+        }
+
+        private void buttonEditProjectConstructor_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(textBlockProjectId.Text, out int projectId))
+            {
+                ProjectCard project = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(t => t.Id == projectId);
+                if (project != null)
+                {
+                    string result = textBoxProjectEmployees.Text;
+                    WindowEmployeesConstructor windowEmployeesConstructor = new WindowEmployeesConstructor(false, true, projectId);
+                    windowEmployeesConstructor.Closed += (s, args) =>
+                    {
+                        result = windowEmployeesConstructor.result;
+                    };
+                    windowEmployeesConstructor.ShowDialog();
+                    textBoxProjectEmployees.Text = result;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Сначала выберите проект");
+            }
+        }
     }
 }
