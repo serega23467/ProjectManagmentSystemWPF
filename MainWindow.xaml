@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagmentSystemWPF"
         mc:Ignorable="d"
-        Title="" Height="526" Width="448" WindowStartupLocation="CenterScreen">
+        Title="Авторизация" Height="526" Width="448" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="182,29,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" FontSize="32"/>
-        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Margin="144,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="22" Height="38" Text="serega1"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Margin="144,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="22" Height="38" Text="MainAdmin"/>
         <PasswordBox x:Name="passwordBoxPass" Password="123456" HorizontalAlignment="Left" Margin="144,213,0,0" VerticalAlignment="Top" Width="232" FontSize="22" Height="38"/>
         <Button x:Name="buttonLogin" Content="Войти" HorizontalAlignment="Left" Margin="67,321,0,0" VerticalAlignment="Top" FontSize="26" Width="154" Click="buttonLogin_Click" Background="#FFA6FD87"/>
         <Button x:Name="buttonRegister" Content="Регистрация" HorizontalAlignment="Left" Margin="289,325,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonRegister_Click" Width="135" Background="#FFFFC5C5"/>

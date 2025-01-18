@@ -91,7 +91,7 @@ namespace ProjectManagmentSystemWPF
                 foreach (int id in tasksId)
                 {
                     ProjectTask task = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == id);
-                    if (task != null)
+                    if (task != null && !task.Completed)
                     {
                         if(!tasks.Select(t=>t.Name).Contains(task.Name))
                         {
@@ -107,12 +107,12 @@ namespace ProjectManagmentSystemWPF
                             {
                                 DateTime date = DateTime.ParseExact(task.Deadline, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                                 TimeSpan dif = date - DateTime.Now;
-                                if (dif.TotalDays > 0)
+                                if (dif.TotalDays < 0)
                                 {
                                     MessageBox.Show($"Задача {task.Name} просрочена на {Math.Abs(dif.Days)} дней");
                                     hasNotice = true;
                                 }
-                                if (dif.TotalDays<7)
+                                else if (dif.TotalDays<7)
                                 {
                                     MessageBox.Show($"До выполнения задачи {task.Name} осталось {dif.Days} дней");
                                     hasNotice = true;
@@ -137,8 +137,17 @@ namespace ProjectManagmentSystemWPF
                     {
                         if (checkBox.IsChecked != taskToEdit.Completed)
                         {
-                            taskToEdit.Completed = true;
-                            card.Progress++;
+                            if(checkBox.IsChecked == true)
+                            {
+                                taskToEdit.Completed = true;
+                                card.Progress++;
+                            }
+                            else
+                            {
+                                taskToEdit.Completed = false;
+                                card.Progress--;
+
+                            }
                             DataBaseContext.GetDB().SaveChanges();
                             UpdateDataGridTasks();
                         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagmentSystemWPF"
         mc:Ignorable="d"
-        Title="" Height="820" Width="1273" WindowStartupLocation="CenterScreen">
+        Title="Окно редактора" Height="820" Width="1273" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
@@ -35,10 +35,10 @@
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,209,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" FontSize="20"/>
 
                     <TextBlock x:Name="textBlockUserId" Grid.Column="1" HorizontalAlignment="Left" Margin="147,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20"/>
-                    <TextBox x:Name="textBoxEditLogin" Grid.Column="1" HorizontalAlignment="Left" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="20" MaxLength="20" PreviewTextInput="textBoxEditLogin_PreviewTextInput"/>
-                    <TextBox x:Name="textBoxEditName" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="20"/>
+                    <TextBox x:Name="textBoxEditLogin" Grid.Column="1" HorizontalAlignment="Left" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="20" MaxLength="20" PreviewTextInput="textBoxEditLogin_PreviewTextInput" MaxHeight="28.6"/>
+                    <TextBox x:Name="textBoxEditName" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" MaxLength="20" MaxHeight="28.6"/>
                     <ComboBox x:Name="comboBoxEditRole" Grid.Column="1" HorizontalAlignment="Left" Margin="147,166,0,0" VerticalAlignment="Top" Width="202" Height="32" FontSize="20"/>
-                    <TextBox x:Name="textBoxEditDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="145,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="134" MaxLength="120"/>
+                    <TextBox x:Name="textBoxEditDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="145,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="134" MaxLength="120" MaxHeight="134"/>
                     <Button x:Name="buttonEditUser" Grid.Column="1" Content="Изменить" HorizontalAlignment="Left" Margin="255,479,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditUser_Click" Background="#FF9CFFEB"/>
                 </Grid>
             </TabItem>
@@ -70,11 +70,11 @@
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="12,466,0,0" TextWrapping="Wrap" Text="Дедлайн (yyyy-mm-dd)" VerticalAlignment="Top" Width="131" Height="62"/>
 
                     <TextBlock x:Name="textBlockTaskId" Grid.Column="1" HorizontalAlignment="Left" Margin="147,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20"/>
-                    <TextBox x:Name="textBoxEditTaskName" Grid.Column="1" HorizontalAlignment="Left" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="20" MaxLength="40"/>
-                    <TextBox x:Name="textBoxEditInfo" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" Height="113" MaxLength="200"/>
-                    <TextBox x:Name="textBoxEditTaskEmployees" Grid.Column="1" HorizontalAlignment="Left" Margin="151,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Height="106" FontSize="20" MaxLength="500"/>
+                    <TextBox x:Name="textBoxEditTaskName" Grid.Column="1" HorizontalAlignment="Left" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxHeight="29" Width="204" FontSize="20" MaxLength="40"/>
+                    <TextBox x:Name="textBoxEditInfo" Grid.Column="1" HorizontalAlignment="Left" Margin="145,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="203" FontSize="20" Height="113" MaxLength="200" MaxHeight="113"/>
+                    <TextBox x:Name="textBoxEditTaskEmployees" Grid.Column="1" HorizontalAlignment="Left" Margin="151,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Height="106" FontSize="20" MaxLength="500" MaxHeight="106"/>
                     <ComboBox x:Name="comboBoxEditPriority" Grid.Column="1" HorizontalAlignment="Left" Margin="149,257,0,0" VerticalAlignment="Top" Width="202" Height="32" FontSize="20"/>
-                    <TextBox x:Name="textBoxDeadline" Grid.Column="1" HorizontalAlignment="Left" Margin="152,466,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="199" MaxLength="12"/>
+                    <TextBox x:Name="textBoxDeadline" Grid.Column="1" HorizontalAlignment="Left" Margin="152,466,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="199" MaxLength="12" MaxHeight="28.6"/>
                     <Button x:Name="buttonEditTask" Grid.Column="1" Content="Изменить" HorizontalAlignment="Left" Margin="140,562,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditTask_Click" Background="#FF9CFFEB"/>
                     <Button x:Name="buttonAddTask" Grid.Column="1" Content="+" HorizontalAlignment="Left" Margin="10,562,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonAddTask_Click" Width="50" Background="#FFA2FF70"/>
                     <Button x:Name="buttonDeleteTask" Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" Margin="271,562,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonDeleteTask_Click" Background="#FFFF9F9F"/>
@@ -113,8 +113,8 @@
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="19,94,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" FontSize="20" Width="100"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="19,179,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" FontSize="20"/>
                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="19,322,0,0" TextWrapping="Wrap" Text="Сотрудники (логины разделенные запятаями)" VerticalAlignment="Top" FontSize="20" Width="137" Height="144"/>
-                    <TextBox x:Name="textBoxProjectEmployees" Grid.Column="1" HorizontalAlignment="Left" Margin="161,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="92" MaxLength="500"/>
-                    <TextBox x:Name="textBoxProjectDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="161,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="160" MaxLength="500"/>
+                    <TextBox x:Name="textBoxProjectEmployees" Grid.Column="1" HorizontalAlignment="Left" Margin="161,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="92" MaxLength="500" MaxHeight="92"/>
+                    <TextBox x:Name="textBoxProjectDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="161,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="20" Height="160" MaxLength="500" MaxHeight="160"/>
                     <Button x:Name="buttonEditProject" Grid.Column="1" Content="Изменить" HorizontalAlignment="Left" Margin="262,493,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditProject_Click" Background="#FF9CFFEB"/>
                     <Button x:Name="buttonUpdateProjects" Grid.Column="1" Content="Обновить" HorizontalAlignment="Left" Margin="242,10,0,0" VerticalAlignment="Top" Width="114" FontSize="20" Click="buttonUpdateProjects_Click"/>
                     <Button x:Name="buttonEditProjectConstructor" Grid.Column="1" Content="Конструктор сотрудников" HorizontalAlignment="Left" Margin="114,442,0,0" VerticalAlignment="Top" Click="buttonEditProjectConstructor_Click"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagmentSystemWPF"
         mc:Ignorable="d"
-        Title="" Height="841" Width="618" WindowStartupLocation="CenterScreen">
+        Title="Добавление задачи" Height="841" Width="618" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="44,90,0,0" TextWrapping="Wrap" Text="Имя задачи" VerticalAlignment="Top" FontSize="20" Width="112"/>
         <TextBlock HorizontalAlignment="Left" Margin="44,130,0,0" TextWrapping="Wrap" Text="Информация" VerticalAlignment="Top" FontSize="20" Width="131"/>
@@ -20,7 +20,7 @@
         <Button x:Name="buttonConstructor" Content="Конструктор сотрудников" HorizontalAlignment="Left" Margin="274,415,0,0" VerticalAlignment="Top" FontSize="16" Height="33" Width="324" Click="buttonConstructor_Click"/>
         <ComboBox x:Name="comboBoxEditPriority" HorizontalAlignment="Left" Margin="274,257,0,0" VerticalAlignment="Top" Width="329" Height="32" FontSize="20"/>
         <TextBox x:Name="textBoxDeadline" HorizontalAlignment="Left" Margin="274,468,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="327" MaxLength="12" FontSize="24"/>
-        <TextBox x:Name="textBoxTaskProjectName" HorizontalAlignment="Left" Margin="274,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="326" MaxLength="50" Height="34"/>
+        <ComboBox x:Name="comboBoxTaskProjectName" HorizontalAlignment="Left" Margin="274,548,0,0" VerticalAlignment="Top" FontSize="20" Width="326" Height="34"/>
         <Button x:Name="buttonAddTask" Content="Oк" HorizontalAlignment="Left" Margin="197,709,0,0" VerticalAlignment="Top" FontSize="24" Width="112" Click="buttonAddTask_Click"/>
 
     </Grid>

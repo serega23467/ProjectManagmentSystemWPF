@@ -364,3 +364,5 @@ C:\Users\sereg\Desktop\ProjectManagmentSystemWPF\obj\Debug\net8.0-windows\Projec
 C:\Users\sereg\Desktop\ProjectManagmentSystemWPF\obj\Debug\net8.0-windows\ref\ProjectManagmentSystemWPF.dll
 C:\Users\sereg\Desktop\ProjectManagmentSystemWPF\obj\Debug\net8.0-windows\WindowEmployeesConstructor.g.cs
 C:\Users\sereg\Desktop\ProjectManagmentSystemWPF\obj\Debug\net8.0-windows\WindowEmployeesConstructor.baml
+C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\obj\Debug\net8.0-windows\WindowEmployeesConstructor.g.cs
+C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\obj\Debug\net8.0-windows\WindowEmployeesConstructor.baml

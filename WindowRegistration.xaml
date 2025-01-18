@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagmentSystemWPF"
         mc:Ignorable="d"
-        Title="" Height="696" Width="458" WindowStartupLocation="CenterScreen">
+        Title="Регистрация" Height="696" Width="458" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="179,22,0,0" TextWrapping="Wrap" Text="Регистрация" VerticalAlignment="Top" FontSize="30"/>
         <TextBlock HorizontalAlignment="Left" Margin="66,93,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" FontSize="20"/>

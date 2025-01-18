@@ -21,16 +21,31 @@ namespace ProjectManagmentSystemWPF
     public partial class WindowAddTask : Window
     {
         Dictionary<int, string> taskPriorityDictionary = new Dictionary<int, string>() { { 1, "слабый" }, { 2, "средний" }, { 3, "сильный" } };
+        List<string> projects;
         public WindowAddTask()
         {
             InitializeComponent();
             comboBoxEditPriority.ItemsSource = new List<string> { "слабый", "средний", "сильный" };
             comboBoxEditPriority.SelectedIndex = 0;
+            projects = new List<string>();
+
+            List<ProjectCard> projectCards = DataBaseContext.GetDB().ProjectsCards.ToList();
+            foreach(var project in projectCards)
+            {
+                projects.Add(project.ProjectName);
+            }
+            comboBoxTaskProjectName.ItemsSource = projects;
+            comboBoxTaskProjectName.SelectedIndex = 0;
         }
 
         private void buttonAddTask_Click(object sender, RoutedEventArgs e)
         {
-            ProjectCard projectCard = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.ProjectName == textBoxTaskProjectName.Text);
+            if(comboBoxTaskProjectName.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите проект");
+                return;
+            }
+            ProjectCard projectCard = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.ProjectName == comboBoxTaskProjectName.SelectedItem);
             if (projectCard == null)
             {
                 MessageBox.Show("Нет проекта с таким именем");
@@ -107,9 +122,9 @@ namespace ProjectManagmentSystemWPF
 
         private void buttonConstructor_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxTaskProjectName.Text != "")
+            if (comboBoxTaskProjectName.SelectedItem != null)
             {
-                ProjectCard projectCard = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.ProjectName == textBoxTaskProjectName.Text);
+                ProjectCard projectCard = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.ProjectName == comboBoxTaskProjectName.SelectedItem);
                 if (projectCard != null)
                 {
                     string result = textBoxEditTaskEmployees.Text;

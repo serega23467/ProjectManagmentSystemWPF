@@ -356,20 +356,24 @@ namespace ProjectManagmentSystemWPF
             DataGridTask task = dataGridAdminTasks.SelectedItem as DataGridTask;
             if (task != null)
             {
-                ProjectTask taskToDelete = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == task.Id);
-                if (taskToDelete != null)
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Подтверждение удаления", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    int taskId = taskToDelete.Id;
-                    List<TaskEmployer> projectTaskEmployeesToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == taskId).ToList();
-                    foreach (TaskEmployer taskEmployer in projectTaskEmployeesToDelete)
+                    ProjectTask taskToDelete = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == task.Id);
+                    if (taskToDelete != null)
                     {
-                        DataBaseContext.GetDB().TasksEmployees.Remove(taskEmployer);
+                        int taskId = taskToDelete.Id;
+                        List<TaskEmployer> projectTaskEmployeesToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == taskId).ToList();
+                        foreach (TaskEmployer taskEmployer in projectTaskEmployeesToDelete)
+                        {
+                            DataBaseContext.GetDB().TasksEmployees.Remove(taskEmployer);
+                        }
+                        DataBaseContext.GetDB().SaveChanges();
+                        DataBaseContext.GetDB().Tasks.Remove(taskToDelete);
+                        DataBaseContext.GetDB().SaveChanges();
+                        MessageBox.Show("Успешно");
+                        UpdateTasksList();
                     }
-                    DataBaseContext.GetDB().SaveChanges();
-                    DataBaseContext.GetDB().Tasks.Remove(taskToDelete);
-                    DataBaseContext.GetDB().SaveChanges();
-                    MessageBox.Show("Успешно");
-                    UpdateTasksList();
                 }
             }
             else
@@ -501,7 +505,7 @@ namespace ProjectManagmentSystemWPF
                 if (task != null)
                 {
                     string result = textBoxEditTaskEmployees.Text;
-                    WindowEmployeesConstructor windowEmployeesConstructor = new WindowEmployeesConstructor(false, false, task.Id, task.ProjectId);
+                    WindowEmployeesConstructor windowEmployeesConstructor = new WindowEmployeesConstructor(false, false, task.ProjectId, task.Id);
                     windowEmployeesConstructor.Closed += (s, args) =>
                     {
                         result = windowEmployeesConstructor.result;

@@ -32,15 +32,18 @@ namespace ProjectManagmentSystemWPF
                     {
                         case "Админ":
                             WindowAdmin windowAdmin = new WindowAdmin(user);
-                            windowAdmin.ShowDialog();
+                            Close();
+                            windowAdmin.Show();
                             break;
                         case "Сотрудник":
                             WindowEmployee windowEmployee = new WindowEmployee(user);
-                            windowEmployee.ShowDialog();
+                            Close();
+                            windowEmployee.Show();
                             break;
                         case "Редактор":
                             WindowEditor windowEditor = new WindowEditor(user);
-                            windowEditor.ShowDialog();
+                            Close();
+                            windowEditor.Show();
                             break;
                     }
                 }

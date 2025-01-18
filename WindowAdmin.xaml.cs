@@ -356,20 +356,24 @@ namespace ProjectManagmentSystemWPF
             DataGridTask task = dataGridAdminTasks.SelectedItem as DataGridTask;
             if (task != null)
             {
-                ProjectTask taskToDelete = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == task.Id);
-                if (taskToDelete != null)
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Подтверждение удаления", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    int taskId = taskToDelete.Id;
-                    List<TaskEmployer> projectTaskEmployeesToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == taskId).ToList();
-                    foreach (TaskEmployer taskEmployer in projectTaskEmployeesToDelete)
+                    ProjectTask taskToDelete = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == task.Id);
+                    if (taskToDelete != null)
                     {
-                        DataBaseContext.GetDB().TasksEmployees.Remove(taskEmployer);
+                        int taskId = taskToDelete.Id;
+                        List<TaskEmployer> projectTaskEmployeesToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == taskId).ToList();
+                        foreach (TaskEmployer taskEmployer in projectTaskEmployeesToDelete)
+                        {
+                            DataBaseContext.GetDB().TasksEmployees.Remove(taskEmployer);
+                        }
+                        DataBaseContext.GetDB().SaveChanges();
+                        DataBaseContext.GetDB().Tasks.Remove(taskToDelete);
+                        DataBaseContext.GetDB().SaveChanges();
+                        MessageBox.Show("Успешно");
+                        UpdateTasksList();
                     }
-                    DataBaseContext.GetDB().SaveChanges();
-                    DataBaseContext.GetDB().Tasks.Remove(taskToDelete);
-                    DataBaseContext.GetDB().SaveChanges();
-                    MessageBox.Show("Успешно");
-                    UpdateTasksList();
                 }
             }
             else
@@ -419,6 +423,12 @@ namespace ProjectManagmentSystemWPF
                 if (textBoxProjectEmployees.Text != card.ProjectEmployees)
                 {
                     List<ProjectTask> tasks = DataBaseContext.GetDB().Tasks.Where(t => t.ProjectId == int.Parse(textBlockProjectId.Text)).ToList();
+                    List<ProjectEmployer> projectEmployeesToEdit = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.ProjectId == int.Parse(textBlockProjectId.Text)).ToList();
+                    foreach (ProjectEmployer employer in projectEmployeesToEdit)
+                    {
+                        DataBaseContext.GetDB().ProjectsEmployees.Remove(employer);
+                    }
+                    DataBaseContext.GetDB().SaveChanges();
                     if (textBoxProjectEmployees.Text==string.Empty)
                     {
                         foreach (var task in tasks)
@@ -429,6 +439,8 @@ namespace ProjectManagmentSystemWPF
                                 DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
                             }
                         }
+                        DataBaseContext.GetDB().SaveChanges();
+                        UpdateProjectsCardsList();
                         return;
                     }
 
@@ -448,11 +460,6 @@ namespace ProjectManagmentSystemWPF
                             }
                         }
                     }            
-                    List<ProjectEmployer> projectEmployeesToEdit = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.ProjectId == int.Parse(textBlockProjectId.Text)).ToList();
-                    foreach (ProjectEmployer employer in projectEmployeesToEdit)
-                    {
-                        DataBaseContext.GetDB().ProjectsEmployees.Remove(employer);
-                    }
                     foreach (string login in employeesLogins)
                     {
                         User user = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == login);
@@ -499,32 +506,36 @@ namespace ProjectManagmentSystemWPF
             DataGridProjectCard card = listBoxProjects.SelectedItem as DataGridProjectCard;
             if (card != null)
             {
-                ProjectCard cardToDelete = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.Id == card.Id);
-                if (cardToDelete != null)
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Подтверждение удаления", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    int cardId = cardToDelete.Id;
-                    List<ProjectEmployer> projectEmployeesToDelete = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.ProjectId == cardId).ToList();
-                    foreach (ProjectEmployer employer in projectEmployeesToDelete)
+                    ProjectCard cardToDelete = DataBaseContext.GetDB().ProjectsCards.FirstOrDefault(p => p.Id == card.Id);
+                    if (cardToDelete != null)
                     {
-                        DataBaseContext.GetDB().ProjectsEmployees.Remove(employer);
-                    }
-                    List<ProjectTask> projectTasksToDelete = DataBaseContext.GetDB().Tasks.Where(t => t.ProjectId == cardId).ToList();
-                    foreach (ProjectTask task in projectTasksToDelete)
-                    {
-                        List<TaskEmployer> taskEmployersToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == task.Id).ToList();
-                        foreach(var taskEmp in taskEmployersToDelete)
+                        int cardId = cardToDelete.Id;
+                        List<ProjectEmployer> projectEmployeesToDelete = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.ProjectId == cardId).ToList();
+                        foreach (ProjectEmployer employer in projectEmployeesToDelete)
                         {
-                            DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
-                            DataBaseContext.GetDB().SaveChanges();
+                            DataBaseContext.GetDB().ProjectsEmployees.Remove(employer);
                         }
-                        DataBaseContext.GetDB().Tasks.Remove(task);
+                        List<ProjectTask> projectTasksToDelete = DataBaseContext.GetDB().Tasks.Where(t => t.ProjectId == cardId).ToList();
+                        foreach (ProjectTask task in projectTasksToDelete)
+                        {
+                            List<TaskEmployer> taskEmployersToDelete = DataBaseContext.GetDB().TasksEmployees.Where(t => t.TaskId == task.Id).ToList();
+                            foreach(var taskEmp in taskEmployersToDelete)
+                            {
+                                DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
+                                DataBaseContext.GetDB().SaveChanges();
+                            }
+                            DataBaseContext.GetDB().Tasks.Remove(task);
+                        }
+                        DataBaseContext.GetDB().SaveChanges();
+                        DataBaseContext.GetDB().ProjectsCards.Remove(cardToDelete);
+                        DataBaseContext.GetDB().SaveChanges();
+                        MessageBox.Show("Успешно");
+                        UpdateProjectsCardsList();
+                        UpdateTasksList();
                     }
-                    DataBaseContext.GetDB().SaveChanges();
-                    DataBaseContext.GetDB().ProjectsCards.Remove(cardToDelete);
-                    DataBaseContext.GetDB().SaveChanges();
-                    MessageBox.Show("Успешно");
-                    UpdateProjectsCardsList();
-                    UpdateTasksList();
                 }
             }
             else
@@ -546,7 +557,7 @@ namespace ProjectManagmentSystemWPF
                 if (task != null)
                 {
                     string result = textBoxEditTaskEmployees.Text;
-                    WindowEmployeesConstructor windowEmployeesConstructor = new WindowEmployeesConstructor(false, false, task.Id, task.ProjectId);
+                    WindowEmployeesConstructor windowEmployeesConstructor = new WindowEmployeesConstructor(false, false, task.ProjectId, task.Id);
                     windowEmployeesConstructor.Closed += (s, args) =>
                     {
                         result = windowEmployeesConstructor.result;
@@ -581,6 +592,76 @@ namespace ProjectManagmentSystemWPF
             else
             {
                 MessageBox.Show("Сначала выберите проект");
+            }
+        }
+
+        private void buttonDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridUser user = dataGridAdminUsers.SelectedItem as DataGridUser;
+            if (user != null)
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Подтверждение удаления", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    if (user.RoleName == "Админ")
+                    {
+                        MessageBox.Show("Невозможно удалить админа");
+                    }
+                    else
+                    {
+                        var dbUser = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Id == user.Id);
+                        if (dbUser != null)
+                        {
+                            List<TaskEmployer> taskEmployers = DataBaseContext.GetDB().TasksEmployees.Where(e => e.EmployerId == user.Id).ToList();
+                            List<ProjectEmployer> projectEmployers = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.EmployerId == user.Id).ToList();
+                            foreach (TaskEmployer taskEmp in taskEmployers)
+                            {
+                                DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
+                            }
+                            DataBaseContext.GetDB().SaveChanges();
+                            foreach (ProjectEmployer prEmp in projectEmployers)
+                            {
+                                DataBaseContext.GetDB().ProjectsEmployees.Remove(prEmp);
+                            }
+                            DataBaseContext.GetDB().SaveChanges();
+                            DataBaseContext.GetDB().Remove(dbUser);
+                            DataBaseContext.GetDB().SaveChanges();
+                            MessageBox.Show("Успешно");
+                            UpdateUsersList();
+                            UpdateProjectsCardsList();
+                            UpdateTasksList();
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void buttonDeleteProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Вы уверены?", "Подтверждение удаления", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                var dbUser = DataBaseContext.GetDB().Users.FirstOrDefault(u => u.Login == textBlockUserLogin.Text);
+                if (dbUser != null)
+                {
+                    List<TaskEmployer> taskEmployers = DataBaseContext.GetDB().TasksEmployees.Where(e => e.EmployerId == dbUser.Id).ToList();
+                    List<ProjectEmployer> projectEmployers = DataBaseContext.GetDB().ProjectsEmployees.Where(e => e.EmployerId == dbUser.Id).ToList();
+                    foreach (TaskEmployer taskEmp in taskEmployers)
+                    {
+                        DataBaseContext.GetDB().TasksEmployees.Remove(taskEmp);
+                    }
+                    DataBaseContext.GetDB().SaveChanges();
+                    foreach (ProjectEmployer prEmp in projectEmployers)
+                    {
+                        DataBaseContext.GetDB().ProjectsEmployees.Remove(prEmp);
+                    }
+                    DataBaseContext.GetDB().SaveChanges();
+                    DataBaseContext.GetDB().Remove(dbUser);
+                    DataBaseContext.GetDB().SaveChanges();
+                    MessageBox.Show("Успешно");
+                    Close(); 
+                }
             }
         }
     }
