@@ -37,29 +37,8 @@ namespace ProjectManagmentSystemWPF
             }
             UpdateDataGridTasks();
             CheckNotification();
-            StartTimer();
-        }
-        private void StartTimer()
-        {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMinutes(2);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-        private async void Timer_Tick(object sender, EventArgs e)
-        {
-            await ExecuteAsyncMethod();
         }
 
-        private async Task ExecuteAsyncMethod()
-        {
-            await Task.Run(() =>
-            {
-                CheckNotification();
-                UpdateDataGridTasks();
-
-            });
-        }
         void UpdateDataGridTasks()
         {
             if (userId != null)
@@ -93,30 +72,19 @@ namespace ProjectManagmentSystemWPF
                     ProjectTask task = DataBaseContext.GetDB().Tasks.FirstOrDefault(t => t.Id == id);
                     if (task != null && !task.Completed)
                     {
-                        if(!tasks.Select(t=>t.Name).Contains(task.Name))
+                        if (!hasNotice)
                         {
-                            MessageBox.Show("Вам назначена новая задача!");
-                        }
-                        else
-                        {
-                            if (task.Info != tasks.FirstOrDefault(t => t.Name == task.Name).Info)
+                            DateTime date = DateTime.ParseExact(task.Deadline, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                            TimeSpan dif = date - DateTime.Now;
+                            if (dif.TotalDays < 0)
                             {
-                                MessageBox.Show("Информация о проекте изменена!");                      
+                                MessageBox.Show($"Задача {task.Name} просрочена на {Math.Abs(dif.Days)} дней");
+                                hasNotice = true;
                             }
-                            if(!hasNotice)
+                            else if (dif.TotalDays < 7)
                             {
-                                DateTime date = DateTime.ParseExact(task.Deadline, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                                TimeSpan dif = date - DateTime.Now;
-                                if (dif.TotalDays < 0)
-                                {
-                                    MessageBox.Show($"Задача {task.Name} просрочена на {Math.Abs(dif.Days)} дней");
-                                    hasNotice = true;
-                                }
-                                else if (dif.TotalDays<7)
-                                {
-                                    MessageBox.Show($"До выполнения задачи {task.Name} осталось {dif.Days} дней");
-                                    hasNotice = true;
-                                }
+                                MessageBox.Show($"До выполнения задачи {task.Name} осталось {dif.Days} дней");
+                                hasNotice = true;
                             }
                         }
                     }
