@@ -309,7 +309,7 @@ namespace ProjectManagmentSystemWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjectManagmentSystemWPF;component/windoweditor.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjectManagmentSystemWPF;V1.0.0.0;component/windoweditor.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WindowEditor.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

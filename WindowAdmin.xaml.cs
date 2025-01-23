@@ -664,5 +664,11 @@ namespace ProjectManagmentSystemWPF
                 }
             }
         }
+
+        private void buttonExport_Click(object sender, RoutedEventArgs e)
+        {
+            WindowExport windowExport = new WindowExport(textBlockUserLogin.Text,textBlockUserRole.Text);
+            windowExport.ShowDialog();
+        }
     }
 }

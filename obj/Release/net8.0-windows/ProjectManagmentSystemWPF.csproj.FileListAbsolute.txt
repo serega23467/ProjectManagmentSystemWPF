@@ -225,3 +225,7 @@ C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windo
 C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\ProjectManagmentSystemWPF.pdb
 C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\ProjectManagmentSystemWPF.genruntimeconfig.cache
 C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\ref\ProjectManagmentSystemWPF.dll
+C:\Users\Student\source\repos\ProjectManagmentSystemWPF\bin\Release\net8.0-windows\ExportTxt.dll
+C:\Users\Student\source\repos\ProjectManagmentSystemWPF\bin\Release\net8.0-windows\ExportTxt.pdb
+C:\Users\Student\source\repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\WindowExport.g.cs
+C:\Users\Student\source\repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\WindowExport.baml

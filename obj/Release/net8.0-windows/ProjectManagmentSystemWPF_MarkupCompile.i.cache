@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\Student\Source\Repos\ProjectManagmentSystemWPF\App.xaml
-9-1070934526
+10-1927959889
 41056661728
-25-1564551579
-216-379122602
-MainWindow.xaml;WindowAddProject.xaml;WindowAddTask.xaml;WindowAdmin.xaml;WindowChangePass.xaml;WindowEditor.xaml;WindowEmployee.xaml;WindowEmployeesConstructor.xaml;WindowRegistration.xaml;
+26-415323745
+217235749593
+MainWindow.xaml;WindowAddProject.xaml;WindowAddTask.xaml;WindowAdmin.xaml;WindowChangePass.xaml;WindowEditor.xaml;WindowEmployee.xaml;WindowEmployeesConstructor.xaml;WindowExport.xaml;WindowRegistration.xaml;
 
-True
+False
 

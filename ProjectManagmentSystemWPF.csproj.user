@@ -28,6 +28,9 @@
     <Compile Update="WindowEmployeesConstructor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WindowExport.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="WindowRegistration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowEmployeesConstructor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowExport.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowRegistration.xaml">

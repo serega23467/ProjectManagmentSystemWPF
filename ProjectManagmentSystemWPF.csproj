@@ -107,6 +107,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExportTxt\ExportTxt\ExportTxt.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="ProjectManagmentDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

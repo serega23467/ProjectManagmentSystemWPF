@@ -80,6 +80,7 @@
                     <Button x:Name="buttonEditTask" Grid.Column="1" Content="Изменить" HorizontalAlignment="Left" Margin="146,640,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonEditTask_Click" Background="#FF9CFFEB"/>
                     <Button x:Name="buttonAddTask" Grid.Column="1" Content="+" HorizontalAlignment="Left" Margin="19,640,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonAddTask_Click" Width="50" Background="#FFA2FF70"/>
                     <Button x:Name="buttonDeleteTask" Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" Margin="274,640,0,0" VerticalAlignment="Top" FontSize="20" Click="buttonDeleteTask_Click" Background="#FFFF9F9F"/>
+                    <Button x:Name="buttonExport" Grid.Column="1" Content="Эскпортировать задачи" HorizontalAlignment="Left" Margin="11,568,0,0" VerticalAlignment="Top" Click="buttonExport_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Проекты" >

@@ -85,7 +85,7 @@ namespace ProjectManagmentSystemWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjectManagmentSystemWPF;component/windowemployee.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjectManagmentSystemWPF;V1.0.0.0;component/windowemployee.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WindowEmployee.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
