@@ -482,19 +482,6 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
-      },
-      "ExportTxt/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "compile": {
-          "bin/placeholder/ExportTxt.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ExportTxt.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
       }
     }
   },
@@ -1191,37 +1178,31 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "ExportTxt/1.0.0": {
-      "type": "project",
-      "path": "../ExportTxt/ExportTxt/ExportTxt.csproj",
-      "msbuildProject": "../ExportTxt/ExportTxt/ExportTxt.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "ExportTxt >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.6"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\maxi_\\.nuget\\packages\\": {},
+    "C:\\Users\\Student\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+      "projectUniqueName": "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
       "projectName": "ProjectManagmentSystemWPF",
-      "projectPath": "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
-      "packagesPath": "C:\\Users\\maxi_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\obj\\",
+      "projectPath": "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\maxi_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1230,17 +1211,12 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {
-            "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj": {
-              "projectPath": "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -1252,7 +1228,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -1282,7 +1259,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

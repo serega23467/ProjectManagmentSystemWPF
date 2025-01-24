@@ -85,7 +85,7 @@ namespace ProjectManagmentSystemWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjectManagmentSystemWPF;component/windowchangepass.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjectManagmentSystemWPF;V1.0.0.0;component/windowchangepass.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WindowChangePass.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

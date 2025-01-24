@@ -107,7 +107,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExportTxt\ExportTxt\ExportTxt.csproj" />
+    <Reference Include="ExportTxt">
+      <HintPath>..\..\..\Desktop\ProjectManagmentSystemWPF-master\bin\Debug\ExportTxt.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
