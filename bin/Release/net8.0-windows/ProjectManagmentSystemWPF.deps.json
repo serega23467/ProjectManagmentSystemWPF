@@ -339,10 +339,7 @@
       },
       "ExportTxt/1.0.0": {
         "runtime": {
-          "ExportTxt.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "ExportTxt.dll": {}
         }
       }
     }

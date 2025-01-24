@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Student\source\repos\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\
+C:\Users\maxi_\Desktop\ProjectManagmentSystemWPF\obj\Release\net8.0-windows\
 ProjectManagmentSystemWPF
 none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
-C:\Users\Student\source\repos\ProjectManagmentSystemWPF\App.xaml
+C:\Users\maxi_\Desktop\ProjectManagmentSystemWPF\App.xaml
 10-1927959889
 41056661728
 24-1475692918
-217-1718885888
+217-303839138
 MainWindow.xaml;WindowAddProject.xaml;WindowAddTask.xaml;WindowAdmin.xaml;WindowChangePass.xaml;WindowEditor.xaml;WindowEmployee.xaml;WindowEmployeesConstructor.xaml;WindowExport.xaml;WindowRegistration.xaml;
 
 False

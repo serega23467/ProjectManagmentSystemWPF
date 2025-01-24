@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj": {}
+    "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\Source\\Repos\\ExportTxt\\ExportTxt\\ExportTxt.csproj": {
+    "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Source\\Repos\\ExportTxt\\ExportTxt\\ExportTxt.csproj",
+        "projectUniqueName": "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj",
         "projectName": "ExportTxt",
-        "projectPath": "C:\\Users\\Student\\Source\\Repos\\ExportTxt\\ExportTxt\\ExportTxt.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\source\\repos\\ExportTxt\\ExportTxt\\obj\\",
+        "projectPath": "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj",
+        "packagesPath": "C:\\Users\\maxi_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxi_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +44,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -68,24 +68,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj": {
+    "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+        "projectUniqueName": "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
         "projectName": "ProjectManagmentSystemWPF",
-        "projectPath": "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Source\\Repos\\ProjectManagmentSystemWPF\\obj\\",
+        "projectPath": "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\ProjectManagmentSystemWPF.csproj",
+        "packagesPath": "C:\\Users\\maxi_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maxi_\\Desktop\\ProjectManagmentSystemWPF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxi_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -94,14 +94,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Student\\Source\\Repos\\ExportTxt\\ExportTxt\\ExportTxt.csproj": {
-                "projectPath": "C:\\Users\\Student\\Source\\Repos\\ExportTxt\\ExportTxt\\ExportTxt.csproj"
+              "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj": {
+                "projectPath": "C:\\Users\\maxi_\\Desktop\\ExportTxt\\ExportTxt\\ExportTxt.csproj"
               }
             }
           }
@@ -115,8 +116,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -146,7 +146,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
