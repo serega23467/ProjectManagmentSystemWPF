@@ -1,42 +1,48 @@
 # Система управления проектами на WPF
 
 
-![вход](https://github.com/serega23467/ProjectManagmentSystemWPF/assets/114952677/6d2b6eaf-4df4-4687-bbd7-29ce3f9979c9)
+![image](https://github.com/user-attachments/assets/9ddb3e35-3f68-4a06-a7ea-0c00783c53d1)
+
 
 окно авторизации
 
 
 
 
-![рег](https://github.com/user-attachments/assets/7624eae0-030f-431b-9021-279ceb50e56f)
+![image](https://github.com/user-attachments/assets/9db9f922-f485-491e-97f6-c580cfc13210)
+
 
 окно регистрации
 
 
 
 
-![юзер](https://github.com/user-attachments/assets/f4759b66-3ec0-4a15-a225-ae6b8cd24a4b)
+![image](https://github.com/user-attachments/assets/6a60ae2d-c410-4276-a372-aaf1e2f9f637)
+
 
 окно обычного пользователя
 
 
 
 
-![админюзерс](https://github.com/user-attachments/assets/d7b87ef9-88ef-4329-9352-6b08c2d09f49)
+![image](https://github.com/user-attachments/assets/2d9cb4fb-cc4b-48cd-8b94-f4b1088229a6)
+
 
 окно администратора список пользователей
 
 
 
 
-![админ задачи](https://github.com/user-attachments/assets/5aa373bd-cc19-42b3-8313-dfc68610452e)
+![image](https://github.com/user-attachments/assets/226c457d-27da-4aa3-931a-9f36d1db20ff)
+
 
 окно администратора список задач
 
 
 
 
-![админ проекты](https://github.com/user-attachments/assets/82466435-2b19-427f-a074-66d01e6d33ba)
+![image](https://github.com/user-attachments/assets/ecc1f97b-c08c-45d0-a16a-bad4171f8cda)
+
 
 окно администратора список проектов
 
